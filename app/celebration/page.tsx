@@ -104,19 +104,17 @@ export default function Celebration() {
 
   return (
     <>
+      {" "}
       <audio ref={audioRef} loop>
-        <source src="/music/perfect.mp3" type="audio/mpeg" />
+        {" "}
+        <source src="/music/perfect.mp3" type="audio/mpeg" />{" "}
       </audio>
-
-      {/* MUSIC BUTTON */}
       <button
         onClick={toggleMusic}
         className="fixed bottom-6 right-6 z-50 bg-[#7a1f1f] text-white px-4 py-3 rounded-full shadow-lg"
       >
         {musicPlaying ? "Pause 🎵" : "Play 🎵"}
       </button>
-
-      {/* HEADER */}
       <header className="fixed top-0 w-full z-[100] bg-[#fdf6f2]/95 backdrop-blur-md border-b border-black/10 shadow-sm">
         <div className="max-w-6xl mx-auto flex justify-between px-6 py-4">
           <div className="font-serif text-lg text-[#5a1414]">DV</div>
@@ -150,10 +148,7 @@ export default function Celebration() {
           </nav>
         </div>
       </header>
-
-      {/* MAIN */}
       <main className="bg-[#fdf6f2] text-gray-800 overflow-y-auto scroll-smooth">
-        {/* HERO */}
         <section
           id="home"
           className="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden pt-20"
@@ -182,7 +177,6 @@ export default function Celebration() {
               <p className="text-sm tracking-[0.3em] text-[#7a1f1f] uppercase">
                 Save the Date
               </p>
-
               <p className="text-xl md:text-2xl">May 6, 2026 · Austin</p>
             </div>
 
@@ -199,16 +193,13 @@ export default function Celebration() {
           </div>
         </section>
 
-        {/* STORY (FIXED ANIMATION) */}
         <section
           id="story"
           className="min-h-screen flex items-center justify-center px-6"
         >
           <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
-            {/* LEFT: IMAGE SLIDER */}
             <StorySlider />
 
-            {/* RIGHT: TEXT */}
             <div className="space-y-6 text-center md:text-left">
               <p className="text-sm tracking-widest text-[#7a1f1f]">
                 OUR STORY
@@ -259,7 +250,7 @@ export default function Celebration() {
             </div>
           </div>
         </section>
-        {/* DETAILS */}
+
         <section
           id="details"
           className="min-h-screen flex items-center justify-center text-center px-6"
@@ -275,7 +266,6 @@ export default function Celebration() {
           </div>
         </section>
 
-        {/* RSVP */}
         <section
           id="rsvp"
           className="min-h-screen flex items-center justify-center text-center px-6"
@@ -286,25 +276,23 @@ export default function Celebration() {
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input
-                  className="w-full p-3 → p-4 text-lg"
                   name="name"
                   placeholder="Your Name"
                   required
-                  className="w-full p-3 border rounded"
+                  className="w-full p-4 text-lg border rounded"
                 />
                 <input
-                  className="w-full p-3 → p-4 text-lg"
                   name="guests"
                   type="number"
                   placeholder="Guests"
                   required
-                  className="w-full p-3 border rounded"
+                  className="w-full p-4 text-lg border rounded"
                 />
 
                 <select
                   name="attending"
                   required
-                  className="w-full p-3 border rounded"
+                  className="w-full p-4 text-lg border rounded"
                 >
                   <option value="">Will you attend?</option>
                   <option value="Yes">Yes</option>
@@ -312,9 +300,8 @@ export default function Celebration() {
                 </select>
 
                 <button
-                  className="bg-[#7a1f1f] text-white px-6 py-3 → py-4 text-lg"
                   type="submit"
-                  className="bg-[#7a1f1f] text-white px-6 py-3 w-full rounded"
+                  className="bg-[#7a1f1f] text-white px-6 py-4 text-lg w-full rounded"
                 >
                   Submit RSVP
                 </button>
@@ -327,7 +314,6 @@ export default function Celebration() {
           </div>
         </section>
 
-        {/* FOOTER */}
         <footer className="py-20 text-center text-base text-gray-500">
           <p>Deeksha & Vivek 💍</p>
           <p>Built with love & chai ☕</p>
@@ -345,9 +331,10 @@ function TimeBox({ label, value }: any) {
       transition={{ duration: 0.6 }}
       className="backdrop-blur-md bg-white/40 border border-white/30 shadow-lg rounded-xl px-4 py-3 min-w-[70px]"
     >
+      {" "}
       <div className="text-2xl font-semibold text-[#5a1414]">
-        {String(value).padStart(2, "0")}
-      </div>
+        {String(value).padStart(2, "0")}{" "}
+      </div>{" "}
       <div className="text-xs tracking-widest text-gray-600 mt-1">
         {label.toUpperCase()}
       </div>
@@ -357,19 +344,15 @@ function TimeBox({ label, value }: any) {
 
 function StorySlider() {
   const images = ["/images/1.jpg", "/images/2.jpg", "/images/3.jpg"];
-
   const [current, setCurrent] = useState(0);
 
-  // ⏱ Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
     }, 3000);
-
     return () => clearInterval(interval);
   }, []);
 
-  // 👆 Swipe support
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   function handleTouchStart(e: any) {
@@ -378,32 +361,25 @@ function StorySlider() {
 
   function handleTouchEnd(e: any) {
     if (touchStart === null) return;
-
     const diff = touchStart - e.changedTouches[0].clientX;
 
-    if (diff > 50) {
-      // swipe left
-      setCurrent((prev) => (prev + 1) % images.length);
-    } else if (diff < -50) {
-      // swipe right
+    if (diff > 50) setCurrent((prev) => (prev + 1) % images.length);
+    else if (diff < -50)
       setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-    }
 
     setTouchStart(null);
   }
 
   return (
     <div className="flex flex-col items-center">
-      {/* IMAGE CONTAINER */}
+      {" "}
       <div
         className="relative w-full max-w-md rounded-2xl overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Glow background */}
-        <div className="absolute inset-0 blur-xl opacity-30 bg-[#eac7b5]" />
-
-        {/* Image with soft border */}
+        {" "}
+        <div className="absolute inset-0 blur-xl opacity-30 bg-[#eac7b5]" />{" "}
         <div className="relative border border-[#e8d5c4]/50 rounded-2xl p-1 backdrop-blur-sm shadow-xl">
           <motion.img
             key={current}
@@ -413,11 +389,9 @@ function StorySlider() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.05 }}
-          />
-        </div>
+          />{" "}
+        </div>{" "}
       </div>
-
-      {/* DOTS */}
       <div className="flex gap-3 mt-4">
         {images.map((_, index) => (
           <button
