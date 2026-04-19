@@ -117,7 +117,11 @@ export default function Celebration() {
       >
         {musicPlaying ? "Pause 🎵" : "Play 🎵"}
       </button>
-      <header className="fixed top-0 w-full z-[100] bg-[#fdf6f2]/95 backdrop-blur-md border-b border-black/10 shadow-sm">
+      <header
+        className={`fixed top-0 w-full z-[100] bg-[#fdf6f2]/95 backdrop-blur-md border-b border-black/10 shadow-sm transition ${
+          menuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
         <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
           {/* Logo */}
           <div className="font-serif text-lg text-[#5a1414]">DV</div>
@@ -151,30 +155,36 @@ export default function Celebration() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="fixed inset-0 bg-[#fdf6f2] z-[200] flex flex-col items-center justify-center space-y-8 text-xl font-serif">
-            {/* Close Button */}
+          <div className="fixed inset-0 z-[200] flex flex-col items-center justify-center text-xl font-serif">
+            {/* Background blur overlay */}
+            <div className="absolute inset-0 bg-[#fdf6f2]/95 backdrop-blur-xl" />
+
+            {/* Close button */}
             <button
-              className="absolute top-6 right-6 text-2xl text-[#7a1f1f]"
+              className="absolute top-6 right-6 text-2xl text-[#7a1f1f] z-10"
               onClick={() => setMenuOpen(false)}
             >
               ✕
             </button>
 
-            {[
-              { id: "home", label: "WELCOME" },
-              { id: "story", label: "OUR STORY" },
-              { id: "details", label: "THE DAY" },
-              { id: "rsvp", label: "JOIN US" },
-            ].map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-[#7a1f1f]"
-              >
-                {item.label}
-              </a>
-            ))}
+            {/* Menu items */}
+            <div className="relative z-10 flex flex-col items-center space-y-8">
+              {[
+                { id: "home", label: "WELCOME" },
+                { id: "story", label: "OUR STORY" },
+                { id: "details", label: "THE DAY" },
+                { id: "rsvp", label: "JOIN US" },
+              ].map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="hover:text-[#7a1f1f] transition"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
         )}
       </header>
