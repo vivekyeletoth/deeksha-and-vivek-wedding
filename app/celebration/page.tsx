@@ -14,7 +14,7 @@ export default function Celebration() {
   const [musicPlaying, setMusicPlaying] = useState(false);
 
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 100]);
+  const y = useTransform(scrollY, [0, 1000], [0, 100]);
 
   const [activeSection, setActiveSection] = useState("home");
 
@@ -187,13 +187,21 @@ export default function Celebration() {
           id="home"
           className="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden pt-20"
         >
+          {/* Base (keep very light) */}
+          <div className="absolute inset-0 bg-[#fdf6f2] z-0" />
+
           <motion.div
             style={{ y }}
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1591604466107-ec97de577aff')] bg-cover bg-center opacity-75"
-          />
+            className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+          >
+            <div className="w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-contain bg-center opacity-30" />
+          </motion.div>
 
-          <div className="absolute inset-0 bg-gradient-to-b from-[#fff5f0]/75 to-[#fdf6f2]/90" />
+          {/* Gold glow (very subtle) */}
+          <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.10),transparent_60%)]" />
 
+          {/* Gradient (make it LIGHTER, not covering everything) */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-[#fdf6f2]/60" />
           <div className="space-y-6 relative z-10">
             <p className="text-sm tracking-widest text-[#7a1f1f]">
               Together with their families
