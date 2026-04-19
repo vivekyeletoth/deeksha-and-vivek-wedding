@@ -188,13 +188,13 @@ export default function Celebration() {
           className="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden pt-20"
         >
           {/* Base (keep very light) */}
-          <div className="absolute inset-0 bg-[#fdf6f2] z-0" />
 
           <motion.div
             style={{ y }}
             className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
           >
-            <div className="w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-contain bg-center opacity-30" />
+            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-contain bg-center opacity-50" />
+            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-50" />
           </motion.div>
 
           {/* Gold glow (very subtle) */}
@@ -202,7 +202,9 @@ export default function Celebration() {
 
           {/* Gradient (make it LIGHTER, not covering everything) */}
           <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-[#fdf6f2]/60" />
-          <div className="space-y-6 relative z-10">
+
+          {/* Content */}
+          <div className="space-y-6 relative z-20">
             <p className="text-sm tracking-widest text-[#7a1f1f]">
               Together with their families
             </p>
