@@ -152,42 +152,36 @@ export default function Celebration() {
             ☰
           </button>
         </div>
-
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="fixed inset-0 z-[200] flex flex-col items-center justify-center text-xl font-serif">
-            {/* Background blur overlay */}
-            <div className="absolute inset-0 bg-[#fdf6f2]/95 backdrop-blur-xl" />
-
-            {/* Close button */}
-            <button
-              className="absolute top-6 right-6 text-2xl text-[#7a1f1f] z-10"
-              onClick={() => setMenuOpen(false)}
-            >
-              ✕
-            </button>
-
-            {/* Menu items */}
-            <div className="relative z-10 flex flex-col items-center space-y-8">
-              {[
-                { id: "home", label: "WELCOME" },
-                { id: "story", label: "OUR STORY" },
-                { id: "details", label: "THE DAY" },
-                { id: "rsvp", label: "JOIN US" },
-              ].map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setMenuOpen(false)}
-                  className="hover:text-[#7a1f1f] transition"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
       </header>
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-[9999] bg-[#fdf6f2] flex flex-col items-center justify-center">
+          <button
+            className="absolute top-6 right-6 text-2xl text-[#7a1f1f]"
+            onClick={() => setMenuOpen(false)}
+          >
+            ✕
+          </button>
+
+          <div className="flex flex-col items-center space-y-8">
+            {[
+              { id: "home", label: "WELCOME" },
+              { id: "story", label: "OUR STORY" },
+              { id: "details", label: "THE DAY" },
+              { id: "rsvp", label: "JOIN US" },
+            ].map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => setMenuOpen(false)}
+                className="text-[#3b1f1f] text-2xl font-serif tracking-widest hover:text-[#7a1f1f] transition"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
       <main className="bg-[#fdf6f2] text-gray-800 overflow-y-auto scroll-smooth">
         <section
           id="home"
@@ -293,16 +287,39 @@ export default function Celebration() {
 
         <section
           id="details"
-          className="min-h-screen flex items-center justify-center text-center px-6"
+          className="min-h-screen flex items-center justify-center text-center px-6 bg-[#fdf6f2]"
         >
-          <div className="space-y-6">
-            <p className="text-sm tracking-widest text-[#7a1f1f]">THE DAY</p>
-            <h2 className="text-4xl md:text-5xl font-serif">
+          <div className="space-y-6 max-w-xl">
+            <p className="text-sm tracking-[0.3em] text-[#7a1f1f]">THE DAY</p>
+
+            <h2 className="text-4xl md:text-5xl font-serif text-[#2d1a1a]">
               Wedding Ceremony
             </h2>
-            <p className="text-lg">May 6, 2026</p>
-            <p className="text-lg">10:15 AM</p>
-            <p className="text-lg">Sri Venkateshwara Temple Austin</p>
+
+            {/* Divider */}
+            <div className="w-16 h-[2px] bg-[#7a1f1f] mx-auto rounded-full"></div>
+
+            <p className="text-lg text-gray-700">May 6, 2026</p>
+            <p className="text-lg text-gray-700">10:15 AM</p>
+
+            {/* Venue */}
+            <div className="mt-4 space-y-2">
+              <p className="text-xl font-serif text-[#2d1a1a]">
+                Sri Venkateshwara Temple
+              </p>
+
+              <p className="text-gray-600">Cedar Park, Texas</p>
+            </div>
+
+            {/* CTA Button */}
+            <a
+              href="https://www.google.com/maps?q=2509+W+New+Hope+Dr+Cedar+Park+TX+78613"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-6 px-6 py-3 border border-[#7a1f1f] rounded-full text-[#7a1f1f] hover:bg-[#7a1f1f] hover:text-white transition"
+            >
+              Get Directions
+            </a>
           </div>
         </section>
 
