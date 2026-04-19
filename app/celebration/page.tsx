@@ -18,6 +18,8 @@ export default function Celebration() {
 
   const [activeSection, setActiveSection] = useState("home");
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const sections = ["home", "story", "details", "rsvp"];
 
@@ -116,10 +118,12 @@ export default function Celebration() {
         {musicPlaying ? "Pause 🎵" : "Play 🎵"}
       </button>
       <header className="fixed top-0 w-full z-[100] bg-[#fdf6f2]/95 backdrop-blur-md border-b border-black/10 shadow-sm">
-        <div className="max-w-6xl mx-auto flex justify-between px-6 py-4">
+        <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+          {/* Logo */}
           <div className="font-serif text-lg text-[#5a1414]">DV</div>
 
-          <nav className="flex gap-8 text-sm tracking-widest text-gray-800">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex gap-8 text-sm tracking-widest text-gray-800">
             {[
               { id: "home", label: "WELCOME" },
               { id: "story", label: "OUR STORY" },
@@ -129,24 +133,50 @@ export default function Celebration() {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`relative pb-1 group transition ${
-                  activeSection === item.id
-                    ? "text-[#7a1f1f]"
-                    : "hover:text-[#7a1f1f]"
-                }`}
+                className="hover:text-[#7a1f1f] transition"
               >
                 {item.label}
-                <span
-                  className={`absolute left-0 bottom-0 h-[1px] bg-[#7a1f1f] transition-all duration-300 ${
-                    activeSection === item.id
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
-                  }`}
-                />
               </a>
             ))}
           </nav>
+
+          {/* Mobile Hamburger */}
+          <button
+            className="md:hidden text-2xl text-[#7a1f1f]"
+            onClick={() => setMenuOpen(true)}
+          >
+            ☰
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="fixed inset-0 bg-[#fdf6f2] z-[200] flex flex-col items-center justify-center space-y-8 text-xl font-serif">
+            {/* Close Button */}
+            <button
+              className="absolute top-6 right-6 text-2xl text-[#7a1f1f]"
+              onClick={() => setMenuOpen(false)}
+            >
+              ✕
+            </button>
+
+            {[
+              { id: "home", label: "WELCOME" },
+              { id: "story", label: "OUR STORY" },
+              { id: "details", label: "THE DAY" },
+              { id: "rsvp", label: "JOIN US" },
+            ].map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#7a1f1f]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
       </header>
       <main className="bg-[#fdf6f2] text-gray-800 overflow-y-auto scroll-smooth">
         <section
@@ -155,7 +185,7 @@ export default function Celebration() {
         >
           <motion.div
             style={{ y }}
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1591604466107-ec97de577aff')] bg-cover bg-center opacity-45"
+            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1591604466107-ec97de577aff')] bg-cover bg-center opacity-75"
           />
 
           <div className="absolute inset-0 bg-gradient-to-b from-[#fff5f0]/75 to-[#fdf6f2]/90" />
