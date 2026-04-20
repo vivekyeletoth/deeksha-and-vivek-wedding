@@ -270,6 +270,19 @@ export default function Celebration() {
 
           {/* Content */}
           <div className="space-y-6 relative z-20">
+            <motion.div
+              className="flex justify-center mb-6"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 0.7, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <img
+                src="/images/ganesha.png"
+                alt="Ganesha"
+                className="w-16 md:w-20 mix-blend-multiply 
+               drop-shadow-[0_4px_10px_rgba(122,31,31,0.2)]"
+              />
+            </motion.div>
             <p className="text-sm tracking-widest text-[#7a1f1f]">
               Together with their families
             </p>
