@@ -108,6 +108,26 @@ export default function Celebration() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    function handleFirstInteraction() {
+      if (!audioRef.current) return;
+
+      audioRef.current.play().catch(() => {});
+      setMusicPlaying(true);
+
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("scroll", handleFirstInteraction);
+    }
+
+    window.addEventListener("click", handleFirstInteraction);
+    window.addEventListener("scroll", handleFirstInteraction);
+
+    return () => {
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("scroll", handleFirstInteraction);
+    };
+  }, []);
+
   return (
     <>
       {loading && (
@@ -393,6 +413,7 @@ export default function Celebration() {
         <footer className="py-20 text-center text-base text-gray-500">
           <p>Deeksha & Vivek 💍</p>
           <p>Built with love & chai ☕</p>
+          <p>ಪ್ರೀತಿಯಿಂದ… ಎಂದೆಂದಿಗೂ ❤️</p>
         </footer>
       </main>
     </>
