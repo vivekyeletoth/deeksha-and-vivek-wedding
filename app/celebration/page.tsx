@@ -112,22 +112,26 @@ export default function Celebration() {
     function handleFirstInteraction() {
       if (!audioRef.current) return;
 
-      audioRef.current.play().catch(() => {});
-      setMusicPlaying(true);
+      audioRef.current
+        .play()
+        .then(() => {
+          setMusicPlaying(true);
+        })
+        .catch(() => {
+          // autoplay blocked → user must press button
+        });
 
+      // remove AFTER first valid interaction
       window.removeEventListener("click", handleFirstInteraction);
-      window.removeEventListener("scroll", handleFirstInteraction);
     }
 
+    // ✅ only use click (mobile-safe)
     window.addEventListener("click", handleFirstInteraction);
-    window.addEventListener("scroll", handleFirstInteraction);
 
     return () => {
       window.removeEventListener("click", handleFirstInteraction);
-      window.removeEventListener("scroll", handleFirstInteraction);
     };
   }, []);
-
   return (
     <>
       {loading && (
