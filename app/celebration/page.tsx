@@ -24,6 +24,10 @@ export default function Celebration() {
 
   const [hasInteracted, setHasInteracted] = useState(false);
 
+  const [attending, setAttending] = useState("");
+
+  const [guests, setGuests] = useState("");
+
   useEffect(() => {
     const sections = ["home", "story", "details", "rsvp"];
 
@@ -89,6 +93,8 @@ export default function Celebration() {
 
       setSubmitted(true);
       e.target.reset();
+      setGuests("");
+      setAttending("");
     } catch (err) {
       console.error(err);
       alert("Something went wrong. Please try again.");
@@ -429,25 +435,11 @@ export default function Celebration() {
                   className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
                 />
 
-                <div className="text-left">
-                  <label className="block text-sm text-[#3a2a2a] mb-1">
-                    Number of attendees (including you)
-                  </label>
-                  <input
-                    name="guests"
-                    type="number"
-                    placeholder="Total attendees"
-                    required
-                    className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    Example: 2 = you + one guest
-                  </p>
-                </div>
-
                 <select
                   name="attending"
                   required
+                  value={attending}
+                  onChange={(e) => setAttending(e.target.value)}
                   className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
                 >
                   <option value="">Will you attend?</option>
@@ -455,10 +447,42 @@ export default function Celebration() {
                   <option value="No">No</option>
                 </select>
 
+                {/* YES section */}
+                {attending === "Yes" && (
+                  <div className="text-left">
+                    <label className="block text-sm text-[#3a2a2a] mb-1">
+                      Number of attendees (including you)
+                    </label>
+
+                    <input
+                      name="guests"
+                      type="number"
+                      min="1" // ✅ prevents 0
+                      value={guests}
+                      onChange={(e) => setGuests(e.target.value)}
+                      placeholder="Total attendees"
+                      required
+                      className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
+                    />
+
+                    <p className="text-xs text-gray-500 mt-1">
+                      Example: 2 = you + one guest
+                    </p>
+                  </div>
+                )}
+
+                {attending === "No" && (
+                  <p className="text-sm text-gray-600 mt-2">
+                    We'll miss you! 💛
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="bg-[#7a1f1f] text-white px-6 py-4 text-lg w-full rounded-xl shadow-md hover:scale-[1.02] transition disabled:opacity-70"
+                  disabled={
+                    loading || !attending || (attending === "Yes" && !guests)
+                  }
+                  className="bg-[#7a1f1f] text-white px-6 py-4 text-lg w-full rounded-xl shadow-md hover:scale-[1.02] transition disabled:opacity-50"
                 >
                   {loading ? "Submitting..." : "Submit RSVP"}
                 </button>
