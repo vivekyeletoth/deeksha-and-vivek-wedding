@@ -20,6 +20,8 @@ export default function Celebration() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const sections = ["home", "story", "details", "rsvp"];
 
@@ -54,10 +56,7 @@ export default function Celebration() {
   async function handleSubmit(e: any) {
     e.preventDefault();
 
-    if (localStorage.getItem("rsvp_submitted")) {
-      alert("You have already submitted your RSVP 💍");
-      return;
-    }
+    setLoading(true);
 
     const formData = new FormData(e.target);
 
@@ -73,16 +72,21 @@ export default function Celebration() {
         "https://script.google.com/macros/s/AKfycbw4gCj96JecVOSO2ZxBiLu3BfSgG45vNTE-T74MSx99mrhW-6Y1GQ3C61lwJSEH4BM/exec",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify(data),
           mode: "no-cors",
         }
       );
 
-      localStorage.setItem("rsvp_submitted", "true");
       setSubmitted(true);
+      e.target.reset();
     } catch (err) {
       console.error(err);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -106,7 +110,16 @@ export default function Celebration() {
 
   return (
     <>
-      {" "}
+      {loading && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-[9999]">
+          <div className="bg-white px-6 py-5 rounded-2xl shadow-xl flex items-center gap-3">
+            <span className="w-5 h-5 border-2 border-[#7a1f1f] border-t-transparent rounded-full animate-spin"></span>
+            <p className="text-[#7a1f1f] font-medium text-lg">
+              Submitting RSVP...
+            </p>
+          </div>
+        </div>
+      )}{" "}
       <audio ref={audioRef} loop>
         {" "}
         <source src="/music/perfect.mp3" type="audio/mpeg" />{" "}
@@ -363,9 +376,10 @@ export default function Celebration() {
 
                 <button
                   type="submit"
-                  className="bg-[#7a1f1f] text-white px-6 py-4 text-lg w-full rounded"
+                  disabled={loading}
+                  className="bg-[#7a1f1f] text-white px-6 py-4 text-lg w-full rounded disabled:opacity-70"
                 >
-                  Submit RSVP
+                  {loading ? "Submitting..." : "Submit RSVP"}
                 </button>
               </form>
             ) : (
