@@ -239,8 +239,6 @@ export default function Celebration() {
           className="min-h-screen flex items-center justify-center px-6 pt-16"
         >
           <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
-            <StorySlider />
-
             <div className="space-y-6 text-center md:text-left">
               <p className="text-sm tracking-widest text-[#7a1f1f]">
                 OUR STORY
@@ -276,8 +274,7 @@ export default function Celebration() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                From being side by side to miles apart, we chose each other,
-                every single time.
+                Whether side by side or miles apart, it was always us.
               </motion.p>
 
               <motion.p
@@ -289,6 +286,7 @@ export default function Celebration() {
                 And now, that choice becomes forever.
               </motion.p>
             </div>
+            <StorySlider />
           </div>
         </section>
 
@@ -407,7 +405,12 @@ function TimeBox({ label, value }: any) {
 }
 
 function StorySlider() {
-  const images = ["/images/1.jpg", "/images/2.jpg", "/images/3.jpg"];
+  const images = [
+    "/images/1.jpg",
+    "/images/2.jpg",
+    "/images/3.jpg",
+    "/images/4.jpg",
+  ];
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
