@@ -220,13 +220,14 @@ export default function Celebration() {
           style={{ y }}
           className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
         >
-          <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-30" />
-          <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-30" />
+          <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-90 contrast-125 brightness-90" />
+          <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-90 contrast-125 brightness-90" />
         </motion.div>
         <section
           id="home"
           className="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden pt-16"
         >
+          <div className="absolute inset-0 bg-[#fdf6f2]/45 z-0" />
           {/* Base (keep very light) */}
 
           {/* Gold glow (very subtle) */}
@@ -270,6 +271,7 @@ export default function Celebration() {
           id="story"
           className="min-h-screen flex items-center justify-center px-6 pt-16 relative overflow-hidden"
         >
+          <div className="absolute inset-0 bg-[#fdf6f2]/45 z-0" />
           {/* Background (SAME as HOME) */}
 
           {/* Subtle gold glow (same as home) */}
@@ -332,6 +334,7 @@ export default function Celebration() {
           id="details"
           className="py-24 flex items-center justify-center text-center px-6 relative overflow-hidden"
         >
+          <div className="absolute inset-0 bg-[#fdf6f2]/45 z-0" />
           {/* Background (same as home style but lighter) */}
           {/* Subtle glow (same pattern as home) */}
           <div
@@ -376,6 +379,7 @@ export default function Celebration() {
           id="rsvp"
           className="py-24 flex items-center justify-center text-center px-6 relative overflow-hidden isolate"
         >
+          <div className="absolute inset-0 bg-[#fdf6f2]/45 z-0" />
           {/* Background (same as HOME) */}
 
           {/* Subtle glow */}
