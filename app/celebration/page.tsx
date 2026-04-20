@@ -14,8 +14,7 @@ export default function Celebration() {
   const [musicPlaying, setMusicPlaying] = useState(false);
 
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, 100]);
-
+  const y = useTransform(scrollY, [0, 1000], [0, 40]);
   const [activeSection, setActiveSection] = useState("home");
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -118,7 +117,7 @@ export default function Celebration() {
         {musicPlaying ? "Pause 🎵" : "Play 🎵"}
       </button>
       <header
-        className={`fixed top-0 w-full z-[100] bg-[#fdf6f2]/95 backdrop-blur-md border-b border-black/10 shadow-sm transition ${
+        className={`fixed top-0 w-full z-[100] bg-[#fdf6f2] border-b border-black/10 shadow-sm transition ${
           menuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
@@ -185,7 +184,7 @@ export default function Celebration() {
       <main className="bg-[#fdf6f2] text-gray-800 overflow-y-auto scroll-smooth">
         <section
           id="home"
-          className="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden pt-20"
+          className="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden pt-16"
         >
           {/* Base (keep very light) */}
 
@@ -239,7 +238,7 @@ export default function Celebration() {
 
         <section
           id="story"
-          className="min-h-screen flex items-center justify-center px-6"
+          className="min-h-screen flex items-center justify-center px-6 pt-16"
         >
           <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
             <StorySlider />
