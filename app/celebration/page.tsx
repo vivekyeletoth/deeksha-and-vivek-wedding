@@ -216,19 +216,18 @@ export default function Celebration() {
         </div>
       )}
       <main className="bg-[#fdf6f2] text-gray-800 overflow-y-auto scroll-smooth">
+        <motion.div
+          style={{ y }}
+          className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+        >
+          <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-30" />
+          <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-30" />
+        </motion.div>
         <section
           id="home"
           className="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden pt-16"
         >
           {/* Base (keep very light) */}
-
-          <motion.div
-            style={{ y }}
-            className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-          >
-            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-5" />{" "}
-            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-5" />
-          </motion.div>
 
           {/* Gold glow (very subtle) */}
           <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.10),transparent_60%)]" />
@@ -272,13 +271,6 @@ export default function Celebration() {
           className="min-h-screen flex items-center justify-center px-6 pt-16 relative overflow-hidden"
         >
           {/* Background (SAME as HOME) */}
-          <motion.div
-            style={{ y }}
-            className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-          >
-            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
-            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
-          </motion.div>
 
           {/* Subtle gold glow (same as home) */}
           <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.10),transparent_60%)]" />
