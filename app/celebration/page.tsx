@@ -239,7 +239,7 @@ export default function Celebration() {
               Together with their families
             </p>
 
-            <h1 className="text-7xl md:text-8xl font-serif">
+            <h1 className="text-5xl md:text-6xl font-serif leading-tight">
               Deeksha <br /> & <br /> Vivek
             </h1>
 
