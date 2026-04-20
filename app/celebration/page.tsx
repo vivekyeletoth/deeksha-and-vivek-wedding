@@ -239,7 +239,7 @@ export default function Celebration() {
               Together with their families
             </p>
 
-            <h1 className="text-5xl md:text-6xl font-serif">
+            <h1 className="text-7xl md:text-8xl font-serif">
               Deeksha <br /> & <br /> Vivek
             </h1>
 
@@ -380,35 +380,11 @@ export default function Celebration() {
           </div>
         </section>
 
-        <section className="-mt-12 mb-8 flex justify-center relative z-20">
-          <div className="text-center">
-            <motion.img
-              src="/images/temple.jpg"
-              alt="Temple"
-              className="w-[200px] h-auto object-contain rounded-lg shadow-md mx-auto brightness-100 contrast-110 saturate-110"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            />
-
-            <p className="mt-2 text-[11px] text-gray-500">
-              Sri Venkateshwara Temple
-            </p>
-          </div>
-        </section>
-
         <section
           id="rsvp"
           className="py-24 flex items-center justify-center text-center px-6 relative overflow-hidden isolate"
         >
           {/* Background (same as HOME) */}
-          <motion.div
-            style={{ y }}
-            className="fixed top-0 left-0 w-full h-screen pointer-events-none z-0"
-          >
-            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
-            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
-          </motion.div>
 
           {/* Subtle glow */}
           <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.10),transparent_60%)]" />
@@ -459,26 +435,21 @@ export default function Celebration() {
                 Thank you! We can't wait to celebrate with you 💍
               </p>
             )}
+            {/* Divider */}
+            <div className="mt-12 w-24 h-[2px] bg-gradient-to-r from-transparent via-[#7a1f1f] to-transparent mx-auto opacity-60" />
+
+            {/* Footer-style ending */}
+            <div className="mt-6 space-y-2 text-center">
+              <p className="font-serif text-base text-[#2d1a1a]">
+                Deeksha & Vivek 💍
+              </p>
+              <p className="text-sm text-[#3a2a2a]">
+                Built with love & chai ☕
+              </p>
+              <p className="text-sm text-[#3a2a2a]">ಪ್ರೀತಿಯಿಂದ… ಎಂದೆಂದಿಗೂ ❤️</p>
+            </div>
           </div>
         </section>
-        {/* FOOTER */}
-        <footer className="relative py-20 text-center text-base text-[#2d1a1a] border-t border-[#e8d5c4] overflow-hidden">
-          {/* Background (same as sections but lighter) */}
-          <div className="absolute inset-0 z-0 opacity-40 saturate-75">
-            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
-            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
-          </div>
-
-          {/* Soft overlay for readability */}
-          {/* CONTENT */}
-          <div className="relative z-20">
-            <p className="font-serif text-lg text-[#2d1a1a]">
-              Deeksha & Vivek 💍
-            </p>
-            <p className="mt-2 text-[#3a2a2a]">Built with love & chai ☕</p>
-            <p className="mt-1 text-[#3a2a2a]">ಪ್ರೀತಿಯಿಂದ… ಎಂದೆಂದಿಗೂ ❤️</p>
-          </div>
-        </footer>
       </main>
     </>
   );
