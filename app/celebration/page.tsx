@@ -22,6 +22,8 @@ export default function Celebration() {
 
   const [loading, setLoading] = useState(false);
 
+  const [hasInteracted, setHasInteracted] = useState(false);
+
   useEffect(() => {
     const sections = ["home", "story", "details", "rsvp"];
 
@@ -47,10 +49,15 @@ export default function Celebration() {
   function toggleMusic() {
     if (!audioRef.current) return;
 
-    if (musicPlaying) audioRef.current.pause();
-    else audioRef.current.play().catch(() => {});
-
-    setMusicPlaying(!musicPlaying);
+    if (audioRef.current.paused) {
+      audioRef.current
+        .play()
+        .then(() => setMusicPlaying(true))
+        .catch(() => {});
+    } else {
+      audioRef.current.pause();
+      setMusicPlaying(false);
+    }
   }
 
   async function handleSubmit(e: any) {
@@ -116,16 +123,16 @@ export default function Celebration() {
         .play()
         .then(() => {
           setMusicPlaying(true);
+          setHasInteracted(true); // 👈 show button now
         })
         .catch(() => {
-          // autoplay blocked → user must press button
+          // autoplay blocked → still show button so user can tap manually
+          setHasInteracted(true);
         });
 
-      // remove AFTER first valid interaction
       window.removeEventListener("click", handleFirstInteraction);
     }
 
-    // ✅ only use click (mobile-safe)
     window.addEventListener("click", handleFirstInteraction);
 
     return () => {
@@ -148,12 +155,14 @@ export default function Celebration() {
         {" "}
         <source src="/music/perfect.mp3" type="audio/mpeg" />{" "}
       </audio>
-      <button
-        onClick={toggleMusic}
-        className="fixed bottom-6 right-6 z-50 bg-[#7a1f1f] text-white px-4 py-3 rounded-full shadow-lg"
-      >
-        {musicPlaying ? "Pause 🎵" : "Play 🎵"}
-      </button>
+      {hasInteracted && (
+        <button
+          onClick={toggleMusic}
+          className="fixed bottom-6 right-6 z-50 bg-[#7a1f1f] text-white px-4 py-3 rounded-full shadow-lg"
+        >
+          {musicPlaying ? "Pause 🎵" : "Play 🎵"}
+        </button>
+      )}
       <header
         className={`fixed top-0 w-full z-[100] backdrop-blur-md bg-white/10 transition ${
           menuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
