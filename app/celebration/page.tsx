@@ -226,8 +226,8 @@ export default function Celebration() {
             style={{ y }}
             className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
           >
-            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-50" />{" "}
-            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-50" />
+            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-5" />{" "}
+            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-5" />
           </motion.div>
 
           {/* Gold glow (very subtle) */}
@@ -276,8 +276,8 @@ export default function Celebration() {
             style={{ y }}
             className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
           >
-            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-50" />
-            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-50" />
+            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
+            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
           </motion.div>
 
           {/* Subtle gold glow (same as home) */}
@@ -399,15 +399,15 @@ export default function Celebration() {
 
         <section
           id="rsvp"
-          className="py-24 flex items-center justify-center text-center px-6 relative overflow-hidden"
+          className="py-24 flex items-center justify-center text-center px-6 relative overflow-hidden isolate"
         >
           {/* Background (same as HOME) */}
           <motion.div
             style={{ y }}
-            className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+            className="fixed top-0 left-0 w-full h-screen pointer-events-none z-0"
           >
-            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-50" />
-            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-50" />
+            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
+            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
           </motion.div>
 
           {/* Subtle glow */}
@@ -461,14 +461,23 @@ export default function Celebration() {
             )}
           </div>
         </section>
-
         {/* FOOTER */}
-        <footer className="py-20 text-center text-base text-[#3a2a2a] bg-[#fdf6f2]">
-          <p className="font-serif text-lg text-[#2d1a1a]">
-            Deeksha & Vivek 💍
-          </p>
-          <p className="mt-2">Built with love & chai ☕</p>
-          <p className="mt-1">ಪ್ರೀತಿಯಿಂದ… ಎಂದೆಂದಿಗೂ ❤️</p>
+        <footer className="relative py-20 text-center text-base text-[#2d1a1a] border-t border-[#e8d5c4] overflow-hidden">
+          {/* Background (same as sections but lighter) */}
+          <div className="absolute inset-0 z-0 opacity-40 saturate-75">
+            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
+            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-40 saturate-75" />
+          </div>
+
+          {/* Soft overlay for readability */}
+          {/* CONTENT */}
+          <div className="relative z-20">
+            <p className="font-serif text-lg text-[#2d1a1a]">
+              Deeksha & Vivek 💍
+            </p>
+            <p className="mt-2 text-[#3a2a2a]">Built with love & chai ☕</p>
+            <p className="mt-1 text-[#3a2a2a]">ಪ್ರೀತಿಯಿಂದ… ಎಂದೆಂದಿಗೂ ❤️</p>
+          </div>
         </footer>
       </main>
     </>
