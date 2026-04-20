@@ -269,20 +269,33 @@ export default function Celebration() {
 
         <section
           id="story"
-          className="min-h-screen flex items-center justify-center px-6 pt-16"
+          className="min-h-screen flex items-center justify-center px-6 pt-16 relative overflow-hidden"
         >
-          <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
+          {/* Background (SAME as HOME) */}
+          <motion.div
+            style={{ y }}
+            className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+          >
+            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-50" />
+            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-50" />
+          </motion.div>
+
+          {/* Subtle gold glow (same as home) */}
+          <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.10),transparent_60%)]" />
+
+          {/* CONTENT */}
+          <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center relative z-20">
             <div className="space-y-6 text-center md:text-left">
               <p className="text-sm tracking-widest text-[#7a1f1f]">
                 OUR STORY
               </p>
 
-              <h2 className="text-5xl md:text-6xl font-serif text-[#2c2c2c]">
+              <h2 className="text-5xl md:text-6xl font-serif text-[#2d1a1a]">
                 Deeksha & Vivek
               </h2>
 
               <motion.p
-                className="text-lg md:text-xl"
+                className="text-lg md:text-xl text-[#3a2a2a]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -292,7 +305,7 @@ export default function Celebration() {
               </motion.p>
 
               <motion.p
-                className="text-lg md:text-xl"
+                className="text-lg md:text-xl text-[#3a2a2a]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -302,7 +315,7 @@ export default function Celebration() {
               </motion.p>
 
               <motion.p
-                className="text-lg md:text-xl"
+                className="text-lg md:text-xl text-[#3a2a2a]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -311,7 +324,7 @@ export default function Celebration() {
               </motion.p>
 
               <motion.p
-                className="font-serif text-lg md:text-xl"
+                className="font-serif text-lg md:text-xl text-[#2d1a1a]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
@@ -319,37 +332,43 @@ export default function Celebration() {
                 And now, that choice becomes forever.
               </motion.p>
             </div>
+
             <StorySlider />
           </div>
         </section>
-
         <section
           id="details"
-          className="min-h-screen flex items-center justify-center text-center px-6 bg-[#fdf6f2]"
+          className="py-24 flex items-center justify-center text-center px-6 relative overflow-hidden"
         >
-          <div className="space-y-6 max-w-xl">
-            <p className="text-sm tracking-[0.3em] text-[#7a1f1f]">THE DAY</p>
+          {/* Background (same as home style but lighter) */}
+          {/* Subtle glow (same pattern as home) */}
+          <div
+            className="absolute inset-0 z-10 
+    bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.08),transparent_60%)]"
+          />
+
+          {/* CONTENT */}
+          <div className="space-y-6 max-w-xl relative z-20">
+            <p className="text-sm tracking-[0.3em] text-[#7a1f1f] font-medium">
+              THE DAY
+            </p>
 
             <h2 className="text-4xl md:text-5xl font-serif text-[#2d1a1a]">
               Wedding Ceremony
             </h2>
 
-            {/* Divider */}
             <div className="w-16 h-[2px] bg-[#7a1f1f] mx-auto rounded-full"></div>
 
-            <p className="text-lg text-gray-700">May 6, 2026</p>
-            <p className="text-lg text-gray-700">10:15 AM</p>
+            <p className="text-lg text-gray-800 font-medium">May 6, 2026</p>
+            <p className="text-lg text-gray-800 font-medium">10:15 AM</p>
 
-            {/* Venue */}
             <div className="mt-4 space-y-2">
               <p className="text-xl font-serif text-[#2d1a1a]">
                 Sri Venkateshwara Temple
               </p>
-
-              <p className="text-gray-600">Cedar Park, Texas</p>
+              <p className="text-gray-700">Cedar Park, Texas</p>
             </div>
 
-            {/* CTA Button */}
             <a
               href="https://www.google.com/maps?q=2509+W+New+Hope+Dr+Cedar+Park+TX+78613"
               target="_blank"
@@ -361,12 +380,44 @@ export default function Celebration() {
           </div>
         </section>
 
+        <section className="-mt-12 mb-8 flex justify-center relative z-20">
+          <div className="text-center">
+            <motion.img
+              src="/images/temple.jpg"
+              alt="Temple"
+              className="w-[200px] h-auto object-contain rounded-lg shadow-md mx-auto brightness-100 contrast-110 saturate-110"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            />
+
+            <p className="mt-2 text-[11px] text-gray-500">
+              Sri Venkateshwara Temple
+            </p>
+          </div>
+        </section>
+
         <section
           id="rsvp"
-          className="min-h-screen flex items-center justify-center text-center px-6"
+          className="py-24 flex items-center justify-center text-center px-6 relative overflow-hidden"
         >
-          <div className="space-y-6 max-w-md">
-            <h2 className="text-4xl md:text-5xl font-serif">Join Us</h2>
+          {/* Background (same as HOME) */}
+          <motion.div
+            style={{ y }}
+            className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+          >
+            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-50" />
+            <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-50" />
+          </motion.div>
+
+          {/* Subtle glow */}
+          <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.10),transparent_60%)]" />
+
+          {/* CONTENT */}
+          <div className="space-y-6 max-w-md relative z-20">
+            <h2 className="text-4xl md:text-5xl font-serif text-[#2d1a1a]">
+              Join Us
+            </h2>
 
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -374,20 +425,21 @@ export default function Celebration() {
                   name="name"
                   placeholder="Your Name"
                   required
-                  className="w-full p-4 text-lg border rounded"
+                  className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
                 />
+
                 <input
                   name="guests"
                   type="number"
                   placeholder="Guests"
                   required
-                  className="w-full p-4 text-lg border rounded"
+                  className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
                 />
 
                 <select
                   name="attending"
                   required
-                  className="w-full p-4 text-lg border rounded"
+                  className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
                 >
                   <option value="">Will you attend?</option>
                   <option value="Yes">Yes</option>
@@ -397,7 +449,7 @@ export default function Celebration() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-[#7a1f1f] text-white px-6 py-4 text-lg w-full rounded disabled:opacity-70"
+                  className="bg-[#7a1f1f] text-white px-6 py-4 text-lg w-full rounded-xl shadow-md hover:scale-[1.02] transition disabled:opacity-70"
                 >
                   {loading ? "Submitting..." : "Submit RSVP"}
                 </button>
@@ -410,10 +462,13 @@ export default function Celebration() {
           </div>
         </section>
 
-        <footer className="py-20 text-center text-base text-gray-500">
-          <p>Deeksha & Vivek 💍</p>
-          <p>Built with love & chai ☕</p>
-          <p>ಪ್ರೀತಿಯಿಂದ… ಎಂದೆಂದಿಗೂ ❤️</p>
+        {/* FOOTER */}
+        <footer className="py-20 text-center text-base text-[#3a2a2a] bg-[#fdf6f2]">
+          <p className="font-serif text-lg text-[#2d1a1a]">
+            Deeksha & Vivek 💍
+          </p>
+          <p className="mt-2">Built with love & chai ☕</p>
+          <p className="mt-1">ಪ್ರೀತಿಯಿಂದ… ಎಂದೆಂದಿಗೂ ❤️</p>
         </footer>
       </main>
     </>
