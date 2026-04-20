@@ -15,6 +15,7 @@ export default function Celebration() {
 
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 40]);
+
   const [activeSection, setActiveSection] = useState("home");
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -192,15 +193,12 @@ export default function Celebration() {
             style={{ y }}
             className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
           >
-            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-contain bg-center opacity-50" />
+            <div className="hidden md:block w-full h-full bg-[url('/images/decor.png')] bg-no-repeat bg-cover bg-center opacity-50" />{" "}
             <div className="block md:hidden w-full h-full bg-[url('/images/decor-mobile.png')] bg-no-repeat bg-cover bg-center opacity-50" />
           </motion.div>
 
           {/* Gold glow (very subtle) */}
           <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.10),transparent_60%)]" />
-
-          {/* Gradient (make it LIGHTER, not covering everything) */}
-          <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-[#fdf6f2]/60" />
 
           {/* Content */}
           <div className="space-y-6 relative z-20">
