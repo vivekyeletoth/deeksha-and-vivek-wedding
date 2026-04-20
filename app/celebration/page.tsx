@@ -240,7 +240,7 @@ export default function Celebration() {
             </p>
 
             <h1 className="text-5xl md:text-6xl font-serif leading-tight">
-              Deeksha <br /> & <br /> Vivek
+              Deeksha & Vivek
             </h1>
 
             <p className="text-lg md:text-xl">
@@ -269,7 +269,7 @@ export default function Celebration() {
 
         <section
           id="story"
-          className="min-h-screen flex items-center justify-center px-6 pt-16 relative overflow-hidden"
+          className="min-h-screen flex items-center justify-center px-6 pt-1 relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-[#fdf6f2]/45 z-0" />
           {/* Background (SAME as HOME) */}
@@ -400,13 +400,21 @@ export default function Celebration() {
                   className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
                 />
 
-                <input
-                  name="guests"
-                  type="number"
-                  placeholder="Guests"
-                  required
-                  className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
-                />
+                <div className="text-left">
+                  <label className="block text-sm text-[#3a2a2a] mb-1">
+                    Number of attendees (including you)
+                  </label>
+                  <input
+                    name="guests"
+                    type="number"
+                    placeholder="Total attendees"
+                    required
+                    className="w-full p-4 text-lg rounded-xl bg-white/70 backdrop-blur-md border border-white/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a1f1f]"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Example: 2 = you + one guest
+                  </p>
+                </div>
 
                 <select
                   name="attending"
