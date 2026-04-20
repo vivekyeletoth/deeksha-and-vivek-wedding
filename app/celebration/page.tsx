@@ -158,9 +158,25 @@ export default function Celebration() {
       {hasInteracted && (
         <button
           onClick={toggleMusic}
-          className="fixed bottom-6 right-6 z-50 bg-[#7a1f1f] text-white px-4 py-3 rounded-full shadow-lg"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 
+               px-5 py-3 rounded-full 
+               backdrop-blur-xl bg-white/20 
+               border border-white/30 
+               shadow-[0_8px_30px_rgba(0,0,0,0.15)]
+               text-[#2d1a1a] 
+               hover:bg-white/30 
+               transition-all duration-300"
         >
-          {musicPlaying ? "Pause 🎵" : "Play 🎵"}
+          {/* Icon */}
+          <span className="text-lg">{musicPlaying ? "❚❚" : "▶"}</span>
+
+          {/* Text */}
+          <span className="font-medium tracking-wide">
+            {musicPlaying ? "Pause" : "Play"}
+          </span>
+
+          {/* Music icon subtle */}
+          <span className="opacity-70">♪</span>
         </button>
       )}
       <header
