@@ -347,7 +347,7 @@ export default function Celebration() {
               </motion.p>
 
               <motion.p
-                className="font-serif text-lg md:text-xl text-[#2d1a1a]"
+                className="font-serif text-xl md:text-2xl text-[#2d1a1a] italic tracking-wide mt-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
