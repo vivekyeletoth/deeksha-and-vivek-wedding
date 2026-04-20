@@ -151,7 +151,7 @@ export default function Celebration() {
         {musicPlaying ? "Pause 🎵" : "Play 🎵"}
       </button>
       <header
-        className={`fixed top-0 w-full z-[100] bg-[#fdf6f2] border-b border-black/10 shadow-sm transition ${
+        className={`fixed top-0 w-full z-[100] backdrop-blur-md bg-white/10 transition ${
           menuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
